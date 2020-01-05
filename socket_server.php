@@ -13,7 +13,7 @@ class Server{
             ]
         ]);
         //监听客户端链接 + 设置地址重用
-        stream_context_set_option($context, 'socket', 'so_reuseport', 1); //请求负载均衡分配到不懂进程
+        stream_context_set_option($context, 'socket', 'so_reuseport', 1); //请求负载均衡分配到不同进程
         stream_context_set_option($context, 'socket', 'so_reuseaddr', 1); //设置连接重用
         $this->socket = stream_socket_server($this->addr, $errno, $errstr, STREAM_SERVER_BIND | STREAM_SERVER_LISTEN, $context);
 
